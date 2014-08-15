@@ -39,6 +39,15 @@ public class HardwareAnimationView extends View {
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
+	
+	@Override
+	protected void onLayout(boolean changed, int left, int top, int right,
+			int bottom) {
+		// TODO Auto-generated method stub
+		super.onLayout(changed, left, top, right, bottom);
+		
+		mLeft = (getWidth() - mBitmapWidth)/2;
+	}
 
 	@Override
 	protected void onAttachedToWindow() {
@@ -55,7 +64,7 @@ public class HardwareAnimationView extends View {
 		super.onDraw(canvas);
 		
 		canvas.save();
-		mLeft = (getWidth() - mBitmapWidth)/2;
+		
 		canvas.drawBitmap(mBitmap, mLeft, mTop, null);
 		mTop++;
 		if (mTop > getHeight()) {
